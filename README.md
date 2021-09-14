@@ -1,5 +1,7 @@
 # simba_empire_winning_reward
 
+Channel running it: https://t.me/simbaempirewinning
+
 **How to start:**
 
 1.  Install nodejs
