@@ -1,12 +1,5 @@
-# simba_empire_auto_train
+# simba_empire_winning_reward
 
-**⚠️ ⚠️ ⚠️ WARNING ⚠️ ⚠️ ⚠️ <br/>
-If you share the private key with a stranger, you will lose all your money, so you need to keep it carefully. You need to understand the source code to enter the private key. <br/>**
-
-**Please do not share the private key with anyone, including relatives.<br/>
-⚠️ ⚠️ ⚠️ WARNING ⚠️ ⚠️ ⚠️**
-
-**Feature:**
 ```
 Auto train if
 1. Win rate > 70% (U can customize)
@@ -24,48 +17,16 @@ Auto train if
 Edit:
 
 ```
-private key = metamask => Account => Account details => Export private key
-```
-
-**Let's go auto train **
-```
-//0: Low
-//1: Medium
-//2: High
-
-//Sample: just only fight if reward is high
-var fight_reward = [1, 2]; 
+const token = 'bot_token'; -> Bot token created by BotFather in telegram
 ```
 
 ```
-//Just only fight if win percent >= 75%
-var min_win_percent = 75;
-```
-
-```
-var wallet = {
-  address: "Your address",
-  private_key: "Your private key"
-};
-```
-
-5.  ```npm install```
-6.  ```npm run start:proc```
-
-
-Result
-```
-==|===> FIGHT ERROR <===|==
-==|===> FINDING MATCH <===|==
-[FIGHT] RATE = 72.02821756987625% ==|===> PET XXXXX - PW 80245.378824 vs MONSTER Jungle Ghost - PW 98102 <===|==
-==|===> FIGHT DONE <===|==
-==|===> FINDING MATCH <===|==
-[FIGHT] RATE = 99% ==|===> PET XXXXX - PW 163538.02451 vs MONSTER Jungle Ghost - PW 98102 <===|==
-==|===> FIGHT DONE <===|==
-==|===> FINDING MATCH <===|==
-[FIGHT] RATE = 99% ==|===> PET XXXXX - PW 163538.02451 vs MONSTER Jungle Ghost - PW 98102 <===|==
-==|===> FIGHT DONE <===|==
-==|===> FINDING MATCH <===|==
+  chat_id: "-1001538798989", -> Channeld / Chat id , get it via : var chatId = await bot.getChat("@ChannelLink");
+  message_id: "2", -> MessageId you want to edit
 ```
 
 So ez game!!
+
+```
+Donate: 0xECd6fa6cD46F6a04b9A85Bfc86BF2a2ac601eb93 (MATIC)
+```
