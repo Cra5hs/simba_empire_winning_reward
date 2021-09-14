@@ -1,17 +1,9 @@
 # simba_empire_winning_reward
 
-```
-Auto train if
-1. Win rate > 70% (U can customize)
-2. Reward if win is medium or high (U can customize)
-3. Monster's level >= Pet's level - 1
-```
-
-
 **How to start:**
 
 1.  Install nodejs
-2.  Open terminal and ```cd {simba_empire_auto_train folder}```
+2.  Open terminal and ```cd {simba_empire_winning_reward folder}```
 3.  Find server/fight.js
 
 Edit:
