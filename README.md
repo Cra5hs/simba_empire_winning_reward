@@ -1,6 +1,6 @@
 # simba_empire_winning_reward
 
-Channel running it: https://t.me/simbaempirewinning
+Channel running it: https://t.me/simbawinning
 
 **How to start:**
 
