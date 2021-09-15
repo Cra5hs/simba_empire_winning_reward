@@ -7,7 +7,7 @@
  */
 
 const Web3 = require('web3');
-const provider = "https://apis.ankr.com/697a695fd08f453eaf1362b60a6b36ca/c82e8af25ab2e42ccee5e02c7a1f2809/polygon/full/main";
+const provider = "provider";
 const web3 = new Web3(new Web3.providers.HttpProvider(provider));
 
 const MonsterInfo = require("./monster_info");
@@ -21,7 +21,7 @@ const ANIMAL_ABI = require("./animal_abi.json");
 const CONTRACT_ANIMAL = new web3.eth.Contract(ANIMAL_ABI, ANIMAL_ADDRESS);
 var moment = require('moment');
 
-const BATTLE_ADDRESS = "0x9aA2F05b70386fFe0A273C757fE02C21da021d62";
+const BATTLE_ADDRESS = "0xFA1a16288ecB0c2844Dd388cfb5f1EFdcE5f4A91";
 const BATTLE_ABI = require("./battle_abi.json");
 const CONTRACT_BATTLE = new web3.eth.Contract(BATTLE_ABI, BATTLE_ADDRESS);
 
@@ -80,9 +80,10 @@ module.exports = {
         str_winning += `${type} <b>${item.name}</b> - <b>${item.prize}</b> SIM \n\n`;
       });
 
+
       bot.editMessageText(str_winning, {
         chat_id: "-1001538798989",
-        message_id: "2",
+        message_id: "7",
         disable_web_page_preview: true,
         disable_notification: false,
         parse_mode: "HTML"
@@ -96,17 +97,16 @@ module.exports = {
     const data = await CONTRACT_BATTLE.methods.getMonsters().call();
     const json = await this.getMonsterMaps(data);
     json.sort(function(a, b) {
-      return parseInt(a.id) - parseInt(b.id);
+      return a.power - b.power;
     });
     return json;
   },
 
   async getMonsterMaps(rawData) {
     const totalMaps = Math.ceil(rawData.length / MONSTER_IN_ONE_MAP);
-
     var that = this;
     if (rawData.length < MONSTER_IN_ONE_MAP) {
-      return Promise.all(rawData.filter(e => e.active).map(async e => {
+      return Promise.all(rawData.map(async e => {
         var level_reward = e.fightCount % 300;
         if (e.fightCount == 0) level_reward = 2; // HIGH
         if (level_reward <= 100) level_reward = 2; // HIGH
@@ -126,7 +126,8 @@ module.exports = {
           id: e.id,
           level_reward: level_reward,
           name: MonsterInfo[parseInt(e.id)].name,
-          prize: prize / 1000000
+          prize: prize / 1000000,
+          power: power
         };
       }));
     }
@@ -148,7 +149,7 @@ module.exports = {
     }
 
 
-    return Promise.all(monsterRaws.filter(e => e.active).map(async e => {
+    return Promise.all(monsterRaws.map(async e => {
       var level_reward = e.fightCount % 300;
       if (e.fightCount == 0) level_reward = 2; // HIGH
       if (level_reward <= 100) level_reward = 2; // HIGH
@@ -167,7 +168,8 @@ module.exports = {
         id: e.id,
         level_reward: level_reward,
         name: MonsterInfo[parseInt(e.id)].name,
-        prize: prize / 1000000
+        prize: prize / 1000000,
+        power: power
       };
     }));
   },

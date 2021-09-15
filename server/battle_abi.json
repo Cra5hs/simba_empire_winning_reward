@@ -17,11 +17,19 @@
     "type": "address"
   }, {
     "internalType": "contract Adventure",
-    "name": "_adventureV1",
+    "name": "_adventureV3",
     "type": "address"
   }, {
-    "internalType": "contract Adventure",
-    "name": "_adventureV2",
+    "internalType": "address",
+    "name": "_adventureFundForBuyingSimba",
+    "type": "address"
+  }, {
+    "internalType": "contract MiddleMan",
+    "name": "_middleMan",
+    "type": "address"
+  }, {
+    "internalType": "contract AdventureHook",
+    "name": "_adventureHook",
     "type": "address"
   }, {
     "internalType": "address",
@@ -132,6 +140,16 @@
   "type": "function"
 }, {
   "inputs": [],
+  "name": "FIGHT_FEE",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
   "name": "MAX_EXP",
   "outputs": [{
     "internalType": "uint256",
@@ -182,6 +200,16 @@
   "type": "function"
 }, {
   "inputs": [],
+  "name": "PRIZE_RATE",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
   "name": "REDUCE_EACH_TIME",
   "outputs": [{
     "internalType": "uint256",
@@ -222,6 +250,16 @@
   "type": "function"
 }, {
   "inputs": [],
+  "name": "WITHDRAW_PERCENTAGE_EACH_TIME",
+  "outputs": [{
+    "internalType": "uint256",
+    "name": "",
+    "type": "uint256"
+  }],
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "inputs": [],
   "name": "blacklister",
   "outputs": [{
     "internalType": "contract Blacklister",
@@ -241,6 +279,20 @@
     "type": "uint256"
   }],
   "name": "buildRates",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "level",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "quantity",
+    "type": "uint256"
+  }],
+  "name": "buySimba",
   "outputs": [],
   "stateMutability": "nonpayable",
   "type": "function"
@@ -305,6 +357,49 @@
   "name": "createMonsters",
   "outputs": [],
   "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "components": [{
+      "internalType": "uint256",
+      "name": "id",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "level",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "hp",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "mp",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "st",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "ag",
+      "type": "uint256"
+    }, {
+      "internalType": "uint256",
+      "name": "it",
+      "type": "uint256"
+    }, {
+      "internalType": "enum AdventureTypes.SimbaClass",
+      "name": "cl",
+      "type": "uint8"
+    }],
+    "internalType": "struct AdventureTypes.Simba",
+    "name": "simba",
+    "type": "tuple"
+  }],
+  "name": "ensureSimbaIsFightable",
+  "outputs": [],
+  "stateMutability": "view",
   "type": "function"
 }, {
   "inputs": [{
@@ -692,6 +787,20 @@
 }, {
   "inputs": [{
     "internalType": "address",
+    "name": "account",
+    "type": "address"
+  }, {
+    "internalType": "uint256",
+    "name": "value",
+    "type": "uint256"
+  }],
+  "name": "increaseReward",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "address",
     "name": "",
     "type": "address"
   }],
@@ -841,6 +950,16 @@
   "type": "function"
 }, {
   "inputs": [{
+    "internalType": "contract AdventureHook",
+    "name": "_adventureHook",
+    "type": "address"
+  }],
+  "name": "setAdventureHook",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
     "internalType": "contract Blacklister",
     "name": "_blacklister",
     "type": "address"
@@ -866,10 +985,30 @@
 }, {
   "inputs": [{
     "internalType": "uint256",
+    "name": "fightFee",
+    "type": "uint256"
+  }],
+  "name": "setFightFee",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
     "name": "maxSimbaCount",
     "type": "uint256"
   }],
   "name": "setMaxSimbaCount",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "contract MiddleMan",
+    "name": "_middleMan",
+    "type": "address"
+  }],
+  "name": "setMiddleMan",
   "outputs": [],
   "stateMutability": "nonpayable",
   "type": "function"
@@ -888,6 +1027,16 @@
     "type": "uint256"
   }],
   "name": "setPrizeConfig",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "internalType": "uint256",
+    "name": "prizeRate",
+    "type": "uint256"
+  }],
+  "name": "setPrizeRate",
   "outputs": [],
   "stateMutability": "nonpayable",
   "type": "function"
@@ -913,6 +1062,10 @@
   }, {
     "internalType": "uint256",
     "name": "_SKIP_WITHDRAW_FEE_DAYS",
+    "type": "uint256"
+  }, {
+    "internalType": "uint256",
+    "name": "_WITHDRAW_PERCENTAGE_EACH_TIME",
     "type": "uint256"
   }],
   "name": "setWithdrawValues",
