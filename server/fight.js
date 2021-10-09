@@ -7,7 +7,7 @@
  */
 
 const Web3 = require('web3');
-const provider = "provider";
+const provider = "https://apis.ankr.com/697a695fd08f453eaf1362b60a6b36ca/c82e8af25ab2e42ccee5e02c7a1f2809/polygon/full/main";
 const web3 = new Web3(new Web3.providers.HttpProvider(provider));
 
 const MonsterInfo = require("./monster_info");
@@ -27,7 +27,7 @@ const CONTRACT_BATTLE = new web3.eth.Contract(BATTLE_ABI, BATTLE_ADDRESS);
 
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = 'bot_token';
+const token = '1953418914:AAHGlpTmKSSJB-WcMylZkDBU4L5bEtXbMB8';
 const bot = new TelegramBot(token, {
   polling: true
 });
