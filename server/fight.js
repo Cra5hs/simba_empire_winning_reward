@@ -7,7 +7,7 @@
  */
 
 const Web3 = require('web3');
-const provider = "https://apis.ankr.com/697a695fd08f453eaf1362b60a6b36ca/c82e8af25ab2e42ccee5e02c7a1f2809/polygon/full/main";
+const provider = "YOUR RPC";
 const web3 = new Web3(new Web3.providers.HttpProvider(provider));
 
 const MonsterInfo = require("./monster_info");
@@ -27,7 +27,11 @@ const CONTRACT_BATTLE = new web3.eth.Contract(BATTLE_ABI, BATTLE_ADDRESS);
 
 const TelegramBot = require('node-telegram-bot-api');
 
+<<<<<<< HEAD
 const token = '1953418914:AAHGlpTmKSSJB-WcMylZkDBU4L5bEtXbMB8';
+=======
+const token = 'YOUR BOT TOKEN';
+>>>>>>> e9c276843d454dc229db35a0c2ab5e32037392f9
 const bot = new TelegramBot(token, {
   polling: true
 });
@@ -107,7 +111,7 @@ module.exports = {
     var that = this;
     if (rawData.length < MONSTER_IN_ONE_MAP) {
       return Promise.all(rawData.map(async e => {
-        var level_reward = e.fightCount % 300;
+        var level_reward = e.fightCount % 500;
         if (e.fightCount == 0) level_reward = 2; // HIGH
         if (level_reward <= 100) level_reward = 2; // HIGH
         else if (level_reward > 100 && level_reward <= 200) level_reward = 1; //MEDIUM
@@ -150,7 +154,7 @@ module.exports = {
 
 
     return Promise.all(monsterRaws.map(async e => {
-      var level_reward = e.fightCount % 300;
+      var level_reward = e.fightCount % 500;
       if (e.fightCount == 0) level_reward = 2; // HIGH
       if (level_reward <= 100) level_reward = 2; // HIGH
       else if (level_reward > 100 && level_reward <= 200) level_reward = 1; //MEDIUM
